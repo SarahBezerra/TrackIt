@@ -1,11 +1,13 @@
 import axios from "axios"
 import React, { useState } from "react"
+import { useNavigate } from "react-router"
+import Loader from "react-loader-spinner"
 import logo from "../../images/logo.png"
 import { Image, Form, StyledLink } from './style.js'
-import Loader from "react-loader-spinner"
 //import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export default function SignUpPage(){
+    const navigate = useNavigate();
     const [ isEnabled, setIsEnabled ] = useState(true);
     const [ registrationData, setRegistrationData ] = useState({
             email: "",
@@ -22,15 +24,19 @@ export default function SignUpPage(){
     function handleSignUp(e){
         e.preventDefault();
         setIsEnabled(false)
-
         const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
         registrationData);
         
         promise.then(response => {
-            console.log(response);
+            console.log(response)
             setIsEnabled(true)
+            navigate("/")
         });
-        promise.catch(error => console.log(error.response));
+        promise.catch(error => {
+            console.log(error.response)
+            setIsEnabled(true)
+            alert(error.response.data.message)
+        });
     }
 
     return(
