@@ -1,0 +1,13 @@
+/*font-family: 'Playball', cursive;*/
+.root{
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px;
+
+    background-color: #FFFFFF;
+}
