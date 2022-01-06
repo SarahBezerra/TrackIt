@@ -6,6 +6,7 @@ import './styles/style.css';
 import LoginPage from "./components/LoginPage/index.js";
 import SignUpPage from "./components/SignUpPage/index.js"
 
+
 function App(){
     return(
         <BrowserRouter>

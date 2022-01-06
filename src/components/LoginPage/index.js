@@ -9,6 +9,7 @@ export default function LoginPage(){
         <Form>
             <input type="email" placeholder="email" name="email" required />
             <input type="password" placeholder="senha" name="password" required />
+
             <button>Entrar</button>
         </Form>
         <StyledLink to="/cadastro">Não tem uma conta? Cadastre-se!</StyledLink>
