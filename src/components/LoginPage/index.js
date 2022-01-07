@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import { Image, Form, StyledLink } from "./style";
@@ -6,6 +7,7 @@ import logo from "../../images/logo.png";
 
 export default function LoginPage(){
     const [ token, setToken ] = useState("");
+    const navigate = useNavigate();
     const [ isEnabled, setIsEnabled ] = useState(true);
     const [ loginData, setLoginData ] = useState({
         email: "",
@@ -21,11 +23,13 @@ export default function LoginPage(){
         promise.then(response => {
             setIsEnabled(true)
             console.log(response)
-            console.log(response.data.token)
+            //console.log(response.data.token)
             setToken(response.data.token)
+            navigate("/hoje")
         })
         promise.catch(error => {
             setIsEnabled(true)
+            alert(error.response.data.message)
             console.log(error.response)
         })
     }
